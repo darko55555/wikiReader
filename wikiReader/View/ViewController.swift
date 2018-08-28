@@ -63,6 +63,19 @@ class ViewController: UIViewController {
             self?.articles += newArticles
         }
     }
+    
+    func reloadDetailsTextfield(){
+        if let manuallySelectedArticleIndex = manuallySelectedArticleIndex,
+            let articleContent = articles[manuallySelectedArticleIndex].extract{
+            DispatchQueue.main.async {
+                self.articleContentView.text = articleContent
+            }
+        }else{
+            DispatchQueue.main.async {
+                self.articleContentView.text = "Opps, looks like a problem while trying to load content, try again..."
+            }
+        }
+    }
 
 }
 
@@ -84,10 +97,14 @@ extension ViewController:UICollectionViewDataSource, UICollectionViewDelegate{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        manuallySelectedArticleIndex = indexPath.row
         let selectedArticleTitle = articles[indexPath.row].title
-        WikiArticleDetailFetcher.fetchDetails(articleTitle: selectedArticleTitle) {
-            let articleExtract = $0?.extract ?? "No details found"
-            print("")
+        WikiArticleDetailFetcher.fetchDetails(articleTitle: selectedArticleTitle) { [weak self] article in
+            let articleExtract = article?.extract ?? "No details found"
+            if let existingArticle = self?.articles.first(where: { $0.pageid == article?.pageid}){
+                    existingArticle.extract = articleExtract
+                    self?.reloadDetailsTextfield()
+            }
         }
         print("")
     }

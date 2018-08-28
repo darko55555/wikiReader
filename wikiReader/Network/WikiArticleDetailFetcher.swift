@@ -22,7 +22,7 @@ class WikiArticleDetailFetcher{
         let exintroQuery = URLQueryItem(name: "exintro", value: "")
         let explaintextQuery = URLQueryItem(name: "explaintext", value: "")
         
-        let articleTitle = articleTitle.replacingOccurrences(of: " ", with: "")
+        let articleTitle = articleTitle.replacingOccurrences(of: " ", with: "_")
         let titles = URLQueryItem(name: "titles", value: articleTitle)
         
         urlComponents.queryItems = [formatQuery, actionQuery, propQuery, exintroQuery,explaintextQuery, titles]

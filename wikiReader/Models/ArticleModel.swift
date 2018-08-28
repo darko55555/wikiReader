@@ -13,7 +13,7 @@ class ArticleModel:Codable{
     let pageid:UInt64
     let title:String
     let ns:Int
-    let extract:String?
+    var extract:String?
     
     init(pageid:UInt64, title:String, ns:Int, extract:String?){
         self.pageid = pageid
