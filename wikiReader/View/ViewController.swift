@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     var manuallySelectedArticleIndex:Int?
     
-    var articles = [ArticleHeader](){
+    var articles = [ArticleModel](){
         didSet{
             //reload top collection view
             DispatchQueue.main.async { [weak self] in
@@ -85,7 +85,8 @@ extension ViewController:UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedArticleTitle = articles[indexPath.row].title
-        WikiArticleDetailFetcher.fetchDetails(articleTitle: selectedArticleTitle) { (articleHeader) in
+        WikiArticleDetailFetcher.fetchDetails(articleTitle: selectedArticleTitle) {
+            let articleExtract = $0?.extract ?? "No details found"
             print("")
         }
         print("")

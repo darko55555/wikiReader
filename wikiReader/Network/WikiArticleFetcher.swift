@@ -27,7 +27,7 @@ class WikiArticleFetcher{
         return urlComponents.url
     }
     
-    static func fetchArticles(withNumberOfArticles numberOfArticles:Int, completion:@escaping ([ArticleHeader]?)->()){
+    static func fetchArticles(withNumberOfArticles numberOfArticles:Int, completion:@escaping ([ArticleModel]?)->()){
         guard let url = generateWikiFetchURL(withNumberOfArticles: numberOfArticles) else { return }
         
         let request = URLRequest(url: url)

@@ -30,7 +30,7 @@ class WikiArticleDetailFetcher{
         return urlComponents.url
     }
     
-    static func fetchDetails(articleTitle:String, completion:@escaping ([WikiDetailsResponseModel]?)->()){
+    static func fetchDetails(articleTitle:String, completion:@escaping (ArticleModel?)->()){
         guard let url = generateWikiArticleDetails(forArticleTitle: articleTitle) else { return }
         
         let request = URLRequest(url: url)
@@ -47,7 +47,7 @@ class WikiArticleDetailFetcher{
                     do{
                         let decoder = JSONDecoder()
                         let responseObject = try decoder.decode(WikiDetailsResponseModel.self, from: data)
-                        //completion(Array(responseObject.query.pages.values))
+                        completion(responseObject.query.pages.values.first)
                         print("")
                     }catch let error{
                         print("Error parsing JSON \(error.localizedDescription)")

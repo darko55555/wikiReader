@@ -21,9 +21,9 @@ class WikiDetailsResponseModel:Codable{
 }
 
 class PagesDetails:Codable{
-    var pages:[String:ArticleDetail]
+    var pages:[String:ArticleModel]
     
-    init(pages:[String:ArticleDetail]){
+    init(pages:[String:ArticleModel]){
         self.pages = pages
     }
 }
