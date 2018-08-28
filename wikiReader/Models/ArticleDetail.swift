@@ -18,7 +18,7 @@ class ArticleDetail:Codable{
         self.pageid = pageid
         self.title = title
         self.ns = ns
-        self.extract = extract
+        self.extract = extract 
     }
     
 }
