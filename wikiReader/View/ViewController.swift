@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var articlesPickerCollectionView: UICollectionView!
     @IBOutlet weak var articleContentView: UITextView!
     
+    var networkActivitySpinner:UIView?
+    
     var manuallySelectedArticleIndex:Int?
     
     var articles = [ArticleModel](){
@@ -41,6 +43,8 @@ class ViewController: UIViewController {
         //Put batch size to limit the number of articles
         loadArticlesFromWiki(withArticleLimit: batchSize)
         
+ 
+        
     }
     
     func registerCellNib(){
@@ -58,9 +62,13 @@ class ViewController: UIViewController {
     }
     
     func loadArticlesFromWiki(withArticleLimit articleLimit:Int){
+        networkActivitySpinner = UIViewController.displaySpinner(onView: self.view)
         WikiArticleFetcher.fetchArticles(withNumberOfArticles: articleLimit) { [weak self] articles in
             guard let newArticles = articles else { return }
             self?.articles += newArticles
+            if let newtworkActivitySpinner = self?.networkActivitySpinner{
+                UIViewController.removeSpinner(spinner: newtworkActivitySpinner)
+            }
         }
     }
     

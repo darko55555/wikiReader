@@ -22,6 +22,7 @@
 		54658C9A213566BF004F611A /* WikiDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54658C99213566BF004F611A /* WikiDetailsResponseModel.swift */; };
 		54658C9C2135682B004F611A /* WikiArticleDetailFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54658C9B2135682B004F611A /* WikiArticleDetailFetcher.swift */; };
 		54658CA02135750D004F611A /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54658C9F2135750D004F611A /* ArticleModel.swift */; };
+		54658CA921357B6A004F611A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54658CA821357B6A004F611A /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		54658C99213566BF004F611A /* WikiDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiDetailsResponseModel.swift; sourceTree = "<group>"; };
 		54658C9B2135682B004F611A /* WikiArticleDetailFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiArticleDetailFetcher.swift; sourceTree = "<group>"; };
 		54658C9F2135750D004F611A /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		54658CA821357B6A004F611A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		543F10EE21352E7C0023A0AB /* wikiReader */ = {
 			isa = PBXGroup;
 			children = (
+				54658CA521357B28004F611A /* Extensions */,
 				543F112D213551670023A0AB /* View */,
 				543F112321352F630023A0AB /* Network */,
 				543F112021352EC80023A0AB /* Models */,
@@ -171,6 +174,14 @@
 				543F112F213551870023A0AB /* ArticleTitleCollectionViewCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		54658CA521357B28004F611A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				54658CA821357B6A004F611A /* UIViewController+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +318,7 @@
 			files = (
 				54658CA02135750D004F611A /* ArticleModel.swift in Sources */,
 				543F10F221352E7C0023A0AB /* ViewController.swift in Sources */,
+				54658CA921357B6A004F611A /* UIViewController+Extensions.swift in Sources */,
 				543F10F821352E7C0023A0AB /* wikiReader.xcdatamodeld in Sources */,
 				543F112C213547580023A0AB /* WikiHeaderResponseModel.swift in Sources */,
 				54658C9C2135682B004F611A /* WikiArticleDetailFetcher.swift in Sources */,
