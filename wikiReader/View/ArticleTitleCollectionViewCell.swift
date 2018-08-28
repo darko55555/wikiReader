@@ -13,6 +13,7 @@ class ArticleTitleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var articleTitle: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        backgroundColor = .green
         // Initialization code
     }
     

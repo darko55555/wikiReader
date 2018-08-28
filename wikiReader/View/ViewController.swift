@@ -99,7 +99,6 @@ extension ViewController:UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = articlesPickerCollectionView.dequeueReusableCell(withReuseIdentifier: "articleCell", for: indexPath) as! ArticleTitleCollectionViewCell
-        cell.backgroundColor = .red
         cell.articleTitle.text = articles[indexPath.row].title
         
         //Fetch new data when second to last cell is shown, count returns batchSize, indexes are 0 based so -1 to compensate, -1 for second to last == -2
