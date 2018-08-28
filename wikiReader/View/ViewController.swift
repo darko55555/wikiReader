@@ -118,11 +118,14 @@ extension ViewController:UICollectionViewDataSource, UICollectionViewDelegate{
             reloadDetailsTextfield()
             return
         }
-        
+        networkActivitySpinner = UIViewController.displaySpinner(onView: self.view)
         let selectedArticleTitle = articles[indexPath.row].title
         WikiArticleDetailFetcher.fetchDetails(articleTitle: selectedArticleTitle) { [weak self] article in
             let articleExtract = article?.extract ?? "No details found"
             if let existingArticle = self?.articles.first(where: { $0.pageid == article?.pageid}){
+                if let newtworkActivitySpinner = self?.networkActivitySpinner{
+                    UIViewController.removeSpinner(spinner: newtworkActivitySpinner)
+                }
                     existingArticle.extract = articleExtract
                     self?.reloadDetailsTextfield()
             }
