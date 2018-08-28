@@ -113,6 +113,13 @@ extension ViewController:UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         manuallySelectedArticleIndex = indexPath.row
+        
+        //If you have extract cached display from memory
+        if let _ = articles[indexPath.row].extract{
+            reloadDetailsTextfield()
+            return
+        }
+        
         let selectedArticleTitle = articles[indexPath.row].title
         WikiArticleDetailFetcher.fetchDetails(articleTitle: selectedArticleTitle) { [weak self] article in
             let articleExtract = article?.extract ?? "No details found"
